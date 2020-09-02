@@ -1,4 +1,7 @@
-import {Platform} from 'react-native';
+/* eslint-disable prettier/prettier */
+import { Dimensions } from 'react-native';
+const { width, height } = Dimensions.get('window');
+import { Platform } from 'react-native';
 module.exports = {
   MainContainer: {
     justifyContent: 'center',
@@ -36,5 +39,50 @@ module.exports = {
   scrollView: {
     // backgroundColor: 'pink',
     marginHorizontal: 20,
+  },
+  imagesIcon: {
+    width: 20, height: 20,
+  },
+  viewTiltes: {
+    width: width, height: height * 0.3,
+  },
+  imagesSoundView: {
+    width: width,
+    height: height * 0.3,
+  },
+  // Slider
+  wrapper: {},
+  slide1: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#9DD6EB',
+  },
+  slide2: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#97CAE5',
+  },
+  slide3: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#92BBD9',
+  },
+  text: {
+    color: '#fff',
+    fontSize: 30,
+    fontWeight: 'bold',
+  },
+  swiperContainer: {
+    flex: 1, height: height,
+  },
+  viewContainer: {
+    height: 300,
+  },
+  imageSwiper: {
+    width: width,
+    height: height * 0.3,
   },
 };
