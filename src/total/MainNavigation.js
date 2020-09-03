@@ -32,7 +32,7 @@ function MainNavigation() {
             }
             else if (route.name === 'Home') {
               // iconName = focused ? 'https://reactnative.dev/img/tiny_logo.png' : 'https://img.icons8.com/material/4ac144/256/user-male.png';
-              iconName = 'https://img.icons8.com/material/4ac144/256/user-male.png';
+              iconName = 'https://upload.wikimedia.org/wikipedia/commons/8/87/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_logo.png';
             } else if (route.name === 'Settings') {
               iconName = 'https://reactnative.dev/img/tiny_logo.png';
             }

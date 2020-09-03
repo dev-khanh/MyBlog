@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
-import { Dimensions } from 'react-native';
-const { width, height } = Dimensions.get('window');
-import { Platform } from 'react-native';
+import {Dimensions} from 'react-native';
+const {width, height} = Dimensions.get('window');
+import {Platform} from 'react-native';
 module.exports = {
   MainContainer: {
     justifyContent: 'center',
@@ -41,10 +41,12 @@ module.exports = {
     marginHorizontal: 20,
   },
   imagesIcon: {
-    width: 20, height: 20,
+    width: 20,
+    height: 20,
   },
   viewTiltes: {
-    width: width, height: height * 0.3,
+    width: width,
+    height: height * 0.3,
   },
   imagesSoundView: {
     width: width,
@@ -76,7 +78,8 @@ module.exports = {
   //   fontWeight: 'bold',
   // },
   swiperContainer: {
-    flex: 1, height: height,
+    flex: 1,
+    height: height,
   },
   viewContainer: {
     height: 300,
@@ -85,7 +88,6 @@ module.exports = {
     width: width,
     height: height * 0.3,
   },
-
 
   // Scroll Animation
   fill: {
@@ -109,7 +111,7 @@ module.exports = {
     height: HEADER_MAX_HEIGHT,
     resizeMode: 'cover',
   }),
-  scrollViewContent: (HEADER_MAX_HEIGHT) =>({
+  scrollViewContent: (HEADER_MAX_HEIGHT) => ({
     paddingTop: Platform.OS !== 'ios' ? HEADER_MAX_HEIGHT : 0,
   }),
   // row: {
@@ -119,4 +121,28 @@ module.exports = {
   //   alignItems: 'center',
   //   justifyContent: 'center',
   // },
+  bar: {
+    backgroundColor: 'transparent',
+    marginTop: Platform.OS === 'ios' ? 28 : 28,
+    height: 30,
+    alignItems: 'center',
+    justifyContent: 'center',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+  },
+  title: {
+    color: 'white',
+    fontSize: 20,
+  },
+  SwiperContainerSsrooll: {
+    height: height * 0.37,
+  },
+
+  // view Content
+  ViewContent: {
+    height: 200,
+    backgroundColor: 'red',
+  },
 };
