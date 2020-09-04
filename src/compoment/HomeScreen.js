@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { PureComponent } from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, Text, FlatList, Image} from 'react-native';
 import {
   MainContainer,
   textView,
