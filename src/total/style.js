@@ -142,7 +142,29 @@ module.exports = {
 
   // view Content
   ViewContent: {
-    height: 200,
+    height: height * 0.2,
     backgroundColor: 'red',
+  },
+  viewInput: {
+    width: width,
+    height: 50,
+    position: 'absolute',
+    top: 0,
+    // backgroundColor: 'yellow',
+  },
+  input: {
+    fontSize: 24,
+    margin: 10,
+    width: width * 0.95,
+    height: 50,
+    backgroundColor: 'white',
+  },
+  imagesSeach: {
+    width: 25,
+    height: 25,
+    position: 'absolute',
+    top: 22,
+    zIndex: 1,
+    right: 20,
   },
 };
