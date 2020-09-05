@@ -8,7 +8,7 @@ import {
   Text,
   TextInput,
   Image,
-  // Dimensions,
+  Dimensions,
   ImageBackground,
 } from 'react-native';
 import { hendleShowList } from '../total/libs';
@@ -18,24 +18,21 @@ import {
   backgroundImage,
   bar,
   title,
-  ViewContent,
   viewInput,
   input,
   imagesSeach,
   scrollViewContent,
-  imagesViewContainer,
-  imagesBackgound,
-  viewBackground,
-  textBold,
-  viewTextOverlod,
-  textCountter,
 } from '../total/style';
 import WidgetSwiper from './widget/WidgetSwiper';
+import FlatlistHorizontal from './widget/FlatlistHorizontal';
+import SvgMessges from './widget/SvgMessges';
+import SvgSheare from './widget/SvgSheare';
+import FlatListHomePage from './widget/FlatListHomePage';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
-// const { width, height } = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 export default class MainScreen extends PureComponent {
   state = {
     setEnable: true,
@@ -161,25 +158,8 @@ export default class MainScreen extends PureComponent {
           onMomentumScrollEnd={() => this.setState({ setEnable: true })}
         />
         <View>
-          <View style={ViewContent}>
-            <View
-              style={imagesViewContainer}>
-              <ImageBackground
-                style={imagesBackgound}
-                source={{
-                  uri:
-                    'https://znews-photo.zadn.vn/w660/Uploaded/neg_esfjeee/2019_03_15/top32quananngonodanang_1.jpg',
-                }}>
-                <View style={viewBackground}>
-                  <Text>ssssssssssssssss</Text>
-                  <Text style={textBold}>ssssssssssssssss</Text>
-                </View>
-                <View style={viewTextOverlod}>
-                  <Text style={textCountter}>DEVK Quoc Khanh</Text>
-                </View>
-              </ImageBackground>
-            </View>
-          </View>
+          <FlatlistHorizontal arrryas={this.props.arraysBloc} />
+          <FlatListHomePage arraysImage={this.props.arraysBloc[2].arraysImage} title={this.props.arraysBloc[2].title} />
           <View>
             <Text>sssssssssss</Text>
             <Text>sssssssssss</Text>
@@ -209,7 +189,7 @@ export default class MainScreen extends PureComponent {
             <Text>sssssssssss</Text>
           </View>
         </View>
-      </View>
+      </View >
     );
   }
 }

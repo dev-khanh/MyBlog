@@ -3,6 +3,12 @@ import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import { Platform } from 'react-native';
 module.exports = {
+  FullView: {
+    width: width,
+  },
+  textRed: {
+    color: 'red',
+  },
   MainContainer: {
     justifyContent: 'center',
     flex: 1,
@@ -143,7 +149,7 @@ module.exports = {
   // view Content
   ViewContent: {
     height: height * 0.2,
-    backgroundColor: 'red',
+    // backgroundColor: 'red',
   },
   viewInput: {
     width: width,
@@ -193,4 +199,52 @@ module.exports = {
   textCountter: {
     color: 'white', fontWeight: 'bold', fontSize: 20,
   },
+
+
+  // FlatListHomePage
+  viewContainerHomePage: {
+    backgroundColor: 'red', width: width * 0.96, height: 400, margin: 10,
+  },
+  positionHomePage: {
+    position: 'absolute',
+    bottom: 0,
+    width: width * 0.96,
+    height: height * 0.17,
+    backgroundColor: '#263238',
+  },
+  titleHomePage: {
+    color: 'white',
+    marginLeft: 10,
+    marginTop: 30,
+    fontSize: 27,
+    fontWeight: 'bold',
+    lineHeight: 26,
+  },
+  titleHomePage2: {
+    color: 'white',
+    marginLeft: 10,
+    marginTop: 5,
+    fontSize: 18,
+    fontWeight: 'bold',
+    lineHeight: 26,
+  },
+  viewBetween: {
+    flexDirection: 'row', justifyContent: 'space-between',
+  },
+  stySvgMess: {
+    marginLeft: 10, marginTop: 5,
+  },
+  styleTextMesss: {
+    color: '#f4ff81',
+    marginLeft: 10,
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  styleSvgSheare: {
+    marginRight: 10, marginTop: 35,
+  },
+  sytleViewContainMess: {
+    flexDirection: 'row', marginTop: 30,
+  },
 };
+

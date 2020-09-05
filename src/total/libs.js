@@ -37,3 +37,8 @@ export function hendleShowList(arrays) {
     });
     return arrayList;
 }
+export function reformatDate(item) {
+    var dt = item.split('T');
+    var dArr = dt[0].split('-');  // ex input "2010-01-18"
+    return dArr[2] + '/' + dArr[1] + '/' + '20' + dArr[0].substring(2); //ex out: "18/01/10"
+}
