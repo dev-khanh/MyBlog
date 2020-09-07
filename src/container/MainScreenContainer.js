@@ -7,6 +7,8 @@ const connectState = (state) => {
         arraysBloc: state.mainReducer.arraysBloc,
         fullname: state.mainReducer.fullname,
         isEditing: state.mainReducer.isEditing,
+        age: state.mainReducer.age,
+        jop: state.mainReducer.jop,
     };
 };
 const connectAPI = (dispatch) => {

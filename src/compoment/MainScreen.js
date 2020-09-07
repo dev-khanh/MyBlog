@@ -9,6 +9,7 @@ import {
   TextInput,
   Image,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import { hendleShowList } from '../total/libs';
 import {
@@ -41,12 +42,15 @@ export default class MainScreen extends PureComponent {
   };
   componentDidMount() {
     this.props.fetchInitData();
+    this.props.fetchPostUser();
   }
   render() {
     // console.log(this.props.isEditing);
-    // if (this.props.arraysBloc != null){
-    //   arrryas = hendleShowList(this.props.arraysBloc);
-    // }
+    // console.log(this.props.fullname);
+
+    if (this.props.arraysBloc != null) {
+      arrryas = hendleShowList(this.props.arraysBloc);
+    }
     const scrollY = Animated.add(
       this.state.scrollY,
       Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0,
@@ -77,98 +81,103 @@ export default class MainScreen extends PureComponent {
       outputRange: [0, 0, -8],
       extrapolate: 'clamp',
     });
-    return (
-      <View style={fill}>
-        <Animated.ScrollView
-          style={fill}
-          scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
-            {
-              useNativeDriver: true,
-              listener: (event) => {
-                const offsetY = event.nativeEvent.contentOffset.y;
-                // console.log(offsetY | 0);
-                if (
-                  (offsetY | 0) === 136 ||
-                  (offsetY | 0) === 135 ||
-                  (offsetY | 0) === 134 ||
-                  (offsetY | 0) === 137
-                ) {
-                  this.setState({ hideShowSeach: true });
-                } else if ((offsetY | 0) === 0) {
-                  this.setState({ hideShowSeach: false });
-                }
-              },
-            },
-          )}>
-          {/* {this._renderScrollViewContent(arrryas)} */}
-        </Animated.ScrollView>
-        <Animated.View
-          pointerEvents="none"
-          style={[
-            header(HEADER_MAX_HEIGHT),
-            { transform: [{ translateY: headerTranslate }] },
-          ]}>
-          <Animated.Image
-            style={[
-              backgroundImage(HEADER_MAX_HEIGHT),
-              {
-                opacity: imageOpacity,
-                transform: [{ translateY: imageTranslate }],
-              },
-            ]}
-            source={require('../../images/cat.jpg')}
-          />
-        </Animated.View>
-        <Animated.View
-          style={[
-            bar,
-            {
-              transform: [{ scale: titleScale }, { translateY: titleTranslate }],
-            },
-          ]}>
-          <Text style={title}>DEVK</Text>
-        </Animated.View>
-        {this.state.hideShowSeach === false ? (
-          <View style={viewInput}>
-            <Image
-              style={imagesSeach}
-              source={{
-                uri:
-                  'https://e7.pngegg.com/pngimages/886/318/png-clipart-computer-icons-edison-state-community-college-google-search-symbol-magnifying-glass-material-logo-google-logo.png',
-              }}
-            />
-            <TextInput
-              style={input}
-              onChangeText={(search) => this.setState({ search })}
-            />
-          </View>
-        ) : (
-            <View />
-          )}
-      </View>
-    );
-  }
-  _renderScrollViewContent(arrryas) {
-    this.props.fetchPostUser();
-    if (arrryas.length > 0) {
+    if (this.props.isEditing) {
+
       return (
-        <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
-          <WidgetSwiper
-            arrryas={arrryas}
-            setEnable={this.state.setEnable}
-            onTouchStart={() => this.setState({ setEnable: false })}
-            onTouchEnd={() => this.setState({ setEnable: true })}
-            onMomentumScrollEnd={() => this.setState({ setEnable: true })}
-          />
-          <View>
-            <FlatlistHorizontal arrryas={this.props.arraysBloc} />
-            <FlatListHomePage arrryas={this.props.arraysBloc} />
-            <Footer name={this.props.fullname} />
-          </View>
+
+        <View style={fill}>
+          <Animated.ScrollView
+            style={fill}
+            scrollEventThrottle={1}
+            onScroll={Animated.event(
+              [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+              {
+                useNativeDriver: true,
+                listener: (event) => {
+                  const offsetY = event.nativeEvent.contentOffset.y;
+                  // console.log(offsetY | 0);
+                  if (
+                    (offsetY | 0) === 136 ||
+                    (offsetY | 0) === 135 ||
+                    (offsetY | 0) === 134 ||
+                    (offsetY | 0) === 137
+                  ) {
+                    this.setState({ hideShowSeach: true });
+                  } else if ((offsetY | 0) === 0) {
+                    this.setState({ hideShowSeach: false });
+                  }
+                },
+              },
+            )}>
+            {this._renderScrollViewContent(arrryas)}
+          </Animated.ScrollView>
+          <Animated.View
+            pointerEvents="none"
+            style={[
+              header(HEADER_MAX_HEIGHT),
+              { transform: [{ translateY: headerTranslate }] },
+            ]}>
+            <Animated.Image
+              style={[
+                backgroundImage(HEADER_MAX_HEIGHT),
+                {
+                  opacity: imageOpacity,
+                  transform: [{ translateY: imageTranslate }],
+                },
+              ]}
+              source={require('../../images/cat.jpg')}
+            />
+          </Animated.View>
+          <Animated.View
+            style={[
+              bar,
+              {
+                transform: [{ scale: titleScale }, { translateY: titleTranslate }],
+              },
+            ]}>
+            <Text style={title}>DEVK</Text>
+          </Animated.View>
+          {this.state.hideShowSeach === false ? (
+            <View style={viewInput}>
+              <Image
+                style={imagesSeach}
+                source={{
+                  uri:
+                    'https://e7.pngegg.com/pngimages/886/318/png-clipart-computer-icons-edison-state-community-college-google-search-symbol-magnifying-glass-material-logo-google-logo.png',
+                }}
+              />
+              <TextInput
+                style={input}
+                onChangeText={(search) => this.setState({ search })}
+              />
+            </View>
+          ) : (
+              <View />
+            )}
         </View>
       );
+    } else {
+      return (
+        <ActivityIndicator color={"#fff"} />
+      );
     }
+  }
+  _renderScrollViewContent(arrryas) {
+    return (
+      <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
+        <WidgetSwiper
+          arrryas={arrryas}
+          setEnable={this.state.setEnable}
+          onTouchStart={() => this.setState({ setEnable: false })}
+          onTouchEnd={() => this.setState({ setEnable: true })}
+          onMomentumScrollEnd={() => this.setState({ setEnable: true })}
+        />
+        <View>
+          <FlatlistHorizontal arrryas={this.props.arraysBloc} />
+          <FlatListHomePage arrryas={this.props.arraysBloc} />
+          <Footer name={this.props.fullname} ages={this.props.age} jobs={this.props.jop} />
+        </View>
+      </View>
+    );
   }
 }

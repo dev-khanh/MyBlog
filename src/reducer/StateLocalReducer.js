@@ -1,5 +1,6 @@
-let appState = {arrayParams: []};
-import {SEND_PARAMS} from '../action/ActionTypes';
+/* eslint-disable prettier/prettier */
+let appState = { arrayParams: [] };
+import { SEND_PARAMS } from '../action/ActionTypes';
 export default function stateLocalReducer(state = appState, action) {
   switch (action.type) {
     case SEND_PARAMS:
