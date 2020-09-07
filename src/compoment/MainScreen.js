@@ -165,19 +165,7 @@ export default class MainScreen extends PureComponent {
                 borderTopRightRadius: 30,
                 borderTopLeftRadius: 15,
                 overflow: 'hidden',
-
-                // // border: 1 'solid',
-                // // padding: '10px',
-                // // box-shadow: '0px -10px 5px #888',
-
-                // backgroundColor: 'transparent',
-                // borderColor: 'black',
-                // borderWidth: 10,
-                // overflow: 'hidden',
-                // shadowColor: 'black',
-                // shadowRadius: 10,
-                // shadowOpacity: 1,
-                flex: 1,
+                
                 borderTopWidth: 15,
                 borderRadius: 2,
                 borderColor: '#778899',
