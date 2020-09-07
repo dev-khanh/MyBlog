@@ -203,7 +203,7 @@ module.exports = {
 
   // FlatListHomePage
   viewContainerHomePage: {
-    backgroundColor: 'red', width: width * 0.96, height: 400, margin: 10,
+    width: width * 0.96, height: 400, margin: 10,
   },
   positionHomePage: {
     position: 'absolute',
@@ -216,15 +216,15 @@ module.exports = {
     color: 'white',
     marginLeft: 10,
     marginTop: 30,
-    fontSize: 27,
+    fontSize: 20,
     fontWeight: 'bold',
-    lineHeight: 26,
+    lineHeight: 20,
   },
   titleHomePage2: {
     color: 'white',
     marginLeft: 10,
     marginTop: 5,
-    fontSize: 18,
+    fontSize: 14,
     fontWeight: 'bold',
     lineHeight: 26,
   },

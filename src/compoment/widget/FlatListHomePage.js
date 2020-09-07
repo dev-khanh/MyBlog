@@ -9,22 +9,28 @@ import {
 } from '../../total/style';
 export default class FlatListHomePage extends PureComponent {
     render() {
+        console.log(this.props.arrryas);
         return (
-            <View style={viewContainerHomePage}>
-                <ImageBackground style={imagesBackgound} source={{ uri: this.props.arraysImage }}>
-                    <View style={positionHomePage}>
-                        <Text style={titleHomePage}> {this.props.title} </Text>
-                        <Text style={titleHomePage2}> {this.props.title} </Text>
-                        <View style={viewBetween}>
-                            <View style={sytleViewContainMess}>
-                                <SvgMessges style={stySvgMess} />
-                                <Text style={styleTextMesss}> 0 </Text>
+            this.props.arrryas.map((item) => {
+                return (
+                    <View key={item.id} style={viewContainerHomePage}>
+                        <ImageBackground style={imagesBackgound} source={{ uri: item.arraysImage }}>
+                            <View style={positionHomePage}>
+                                <Text style={titleHomePage}> {item.title} </Text>
+                                <Text style={titleHomePage2}> {item.title} </Text>
+                                <View style={viewBetween}>
+                                    <View style={sytleViewContainMess}>
+                                        <SvgMessges style={stySvgMess} />
+                                        <Text style={styleTextMesss}> 0 </Text>
+                                    </View>
+                                    <SvgSheare style={styleSvgSheare} />
+                                </View>
                             </View>
-                            <SvgSheare style={styleSvgSheare} />
-                        </View>
+                        </ImageBackground>
                     </View>
-                </ImageBackground>
-            </View>
-        );
+                );
+            }
+
+            ));
     }
 }

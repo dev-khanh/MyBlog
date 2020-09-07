@@ -159,35 +159,7 @@ export default class MainScreen extends PureComponent {
         />
         <View>
           <FlatlistHorizontal arrryas={this.props.arraysBloc} />
-          <FlatListHomePage arraysImage={this.props.arraysBloc[2].arraysImage} title={this.props.arraysBloc[2].title} />
-          <View>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-          </View>
+          <FlatListHomePage arrryas={this.props.arraysBloc} />
         </View>
       </View >
     );
