@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-bitwise */
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import {
   View,
   Animated,
@@ -9,9 +9,8 @@ import {
   TextInput,
   Image,
   Dimensions,
-  ImageBackground,
 } from 'react-native';
-import { hendleShowList } from '../total/libs';
+import {hendleShowList} from '../total/libs';
 import {
   fill,
   header,
@@ -25,14 +24,14 @@ import {
 } from '../total/style';
 import WidgetSwiper from './widget/WidgetSwiper';
 import FlatlistHorizontal from './widget/FlatlistHorizontal';
-import SvgMessges from './widget/SvgMessges';
-import SvgSheare from './widget/SvgSheare';
 import FlatListHomePage from './widget/FlatListHomePage';
+import Footer from './widget/Footer';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
+let arrryas = [];
 export default class MainScreen extends PureComponent {
   state = {
     setEnable: true,
@@ -44,7 +43,10 @@ export default class MainScreen extends PureComponent {
     this.props.fetchInitData();
   }
   render() {
-    let arrryas = hendleShowList(this.props.arraysBloc);
+    // console.log(this.props.isEditing);
+    // if (this.props.arraysBloc != null){
+    //   arrryas = hendleShowList(this.props.arraysBloc);
+    // }
     const scrollY = Animated.add(
       this.state.scrollY,
       Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0,
@@ -81,7 +83,7 @@ export default class MainScreen extends PureComponent {
           style={fill}
           scrollEventThrottle={1}
           onScroll={Animated.event(
-            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+            [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}],
             {
               useNativeDriver: true,
               listener: (event) => {
@@ -90,29 +92,30 @@ export default class MainScreen extends PureComponent {
                 if (
                   (offsetY | 0) === 136 ||
                   (offsetY | 0) === 135 ||
-                  (offsetY | 0) === 134
+                  (offsetY | 0) === 134 ||
+                  (offsetY | 0) === 137
                 ) {
-                  this.setState({ hideShowSeach: true });
+                  this.setState({hideShowSeach: true});
                 } else if ((offsetY | 0) === 0) {
-                  this.setState({ hideShowSeach: false });
+                  this.setState({hideShowSeach: false});
                 }
               },
             },
           )}>
-          {this._renderScrollViewContent(arrryas)}
+          {/* {this._renderScrollViewContent(arrryas)} */}
         </Animated.ScrollView>
         <Animated.View
           pointerEvents="none"
           style={[
             header(HEADER_MAX_HEIGHT),
-            { transform: [{ translateY: headerTranslate }] },
+            {transform: [{translateY: headerTranslate}]},
           ]}>
           <Animated.Image
             style={[
               backgroundImage(HEADER_MAX_HEIGHT),
               {
                 opacity: imageOpacity,
-                transform: [{ translateY: imageTranslate }],
+                transform: [{translateY: imageTranslate}],
               },
             ]}
             source={require('../../images/cat.jpg')}
@@ -122,7 +125,7 @@ export default class MainScreen extends PureComponent {
           style={[
             bar,
             {
-              transform: [{ scale: titleScale }, { translateY: titleTranslate }],
+              transform: [{scale: titleScale}, {translateY: titleTranslate}],
             },
           ]}>
           <Text style={title}>DEVK</Text>
@@ -138,58 +141,34 @@ export default class MainScreen extends PureComponent {
             />
             <TextInput
               style={input}
-              onChangeText={(search) => this.setState({ search })}
+              onChangeText={(search) => this.setState({search})}
             />
           </View>
         ) : (
-            <View />
-          )}
+          <View />
+        )}
       </View>
     );
   }
   _renderScrollViewContent(arrryas) {
-    return (
-      <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
-        <WidgetSwiper
-          arrryas={arrryas}
-          setEnable={this.state.setEnable}
-          onTouchStart={() => this.setState({ setEnable: false })}
-          onTouchEnd={() => this.setState({ setEnable: true })}
-          onMomentumScrollEnd={() => this.setState({ setEnable: true })}
-        />
-        <View>
-          <FlatlistHorizontal arrryas={this.props.arraysBloc} />
-          <FlatListHomePage arraysImage={this.props.arraysBloc[2].arraysImage} title={this.props.arraysBloc[2].title} />
+    this.props.fetchPostUser();
+    if (arrryas.length > 0) {
+      return (
+        <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
+          <WidgetSwiper
+            arrryas={arrryas}
+            setEnable={this.state.setEnable}
+            onTouchStart={() => this.setState({setEnable: false})}
+            onTouchEnd={() => this.setState({setEnable: true})}
+            onMomentumScrollEnd={() => this.setState({setEnable: true})}
+          />
           <View>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
-            <Text>sssssssssss</Text>
+            <FlatlistHorizontal arrryas={this.props.arraysBloc} />
+            <FlatListHomePage arrryas={this.props.arraysBloc} />
+            <Footer name={this.props.fullname}/>
           </View>
         </View>
-      </View >
-    );
+      );
+    }
   }
 }

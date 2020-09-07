@@ -3,6 +3,15 @@ import { Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 import { Platform } from 'react-native';
 module.exports = {
+  flex: {
+    flex: 1,
+  },
+  row:{
+    flexDirection: 'row',
+  },
+  flex2: {
+    flex:2,
+  },
   FullView: {
     width: width,
   },
@@ -98,6 +107,7 @@ module.exports = {
   // Scroll Animation
   fill: {
     flex: 1,
+    backgroundColor: '#607d8b',
   },
   header: (HEADER_MAX_HEIGHT) => ({
     position: 'absolute',
@@ -215,18 +225,18 @@ module.exports = {
   titleHomePage: {
     color: 'white',
     marginLeft: 10,
-    marginTop: 30,
-    fontSize: 27,
+    marginTop: 10,
+    fontSize: 16,
     fontWeight: 'bold',
-    lineHeight: 26,
+    lineHeight: 18,
   },
   titleHomePage2: {
     color: 'white',
     marginLeft: 10,
     marginTop: 5,
-    fontSize: 18,
+    fontSize: 12,
     fontWeight: 'bold',
-    lineHeight: 26,
+    lineHeight: 14,
   },
   viewBetween: {
     flexDirection: 'row', justifyContent: 'space-between',
@@ -245,6 +255,27 @@ module.exports = {
   },
   sytleViewContainMess: {
     flexDirection: 'row', marginTop: 30,
+  },
+
+
+  //  Footer
+  footerViewContainer: {
+    width: width,
+    height: height * 0.16,
+    backgroundColor: 'black',
+    flexDirection: 'row',
+  },
+  footterTextSocialchannel:{
+    color: 'white', margin: 5,
+  },
+  footterImages: {
+    marginTop: 20, marginLeft: 20, width: 70, height: 70,
+  },
+  footerTextInfo: {
+    color: 'white', margin: 5, alignItems: 'center',
+  },
+  footterTextInfoName:{
+    color: 'white', margin: 5, flex: 1,
   },
 };
 
