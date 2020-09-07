@@ -16,4 +16,6 @@ export default class App extends PureComponent {
     );
   }
 }
-SagaMiddleware.run(rootSaga);
+if (process.env.NODE_ENV !== 'test') {
+  SagaMiddleware.run(rootSaga);
+}

@@ -9,7 +9,6 @@ import {
   TextInput,
   Image,
   Dimensions,
-  ImageBackground,
 } from 'react-native';
 import { hendleShowList } from '../total/libs';
 import {
@@ -25,14 +24,14 @@ import {
 } from '../total/style';
 import WidgetSwiper from './widget/WidgetSwiper';
 import FlatlistHorizontal from './widget/FlatlistHorizontal';
-import SvgMessges from './widget/SvgMessges';
-import SvgSheare from './widget/SvgSheare';
 import FlatListHomePage from './widget/FlatListHomePage';
+import Footer from './widget/Footer';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 const { width, height } = Dimensions.get('window');
+let arrryas = [];
 export default class MainScreen extends PureComponent {
   state = {
     setEnable: true,
@@ -44,7 +43,10 @@ export default class MainScreen extends PureComponent {
     this.props.fetchInitData();
   }
   render() {
-    let arrryas = hendleShowList(this.props.arraysBloc);
+    // console.log(this.props.isEditing);
+    // if (this.props.arraysBloc != null){
+    //   arrryas = hendleShowList(this.props.arraysBloc);
+    // }
     const scrollY = Animated.add(
       this.state.scrollY,
       Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0,
@@ -90,7 +92,8 @@ export default class MainScreen extends PureComponent {
                 if (
                   (offsetY | 0) === 136 ||
                   (offsetY | 0) === 135 ||
-                  (offsetY | 0) === 134
+                  (offsetY | 0) === 134 ||
+                  (offsetY | 0) === 137
                 ) {
                   this.setState({ hideShowSeach: true });
                 } else if ((offsetY | 0) === 0) {
@@ -99,7 +102,7 @@ export default class MainScreen extends PureComponent {
               },
             },
           )}>
-          {this._renderScrollViewContent(arrryas)}
+          {/* {this._renderScrollViewContent(arrryas)} */}
         </Animated.ScrollView>
         <Animated.View
           pointerEvents="none"
@@ -148,20 +151,24 @@ export default class MainScreen extends PureComponent {
     );
   }
   _renderScrollViewContent(arrryas) {
-    return (
-      <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
-        <WidgetSwiper
-          arrryas={arrryas}
-          setEnable={this.state.setEnable}
-          onTouchStart={() => this.setState({ setEnable: false })}
-          onTouchEnd={() => this.setState({ setEnable: true })}
-          onMomentumScrollEnd={() => this.setState({ setEnable: true })}
-        />
-        <View>
-          <FlatlistHorizontal arrryas={this.props.arraysBloc} />
-          <FlatListHomePage arrryas={this.props.arraysBloc} />
+    this.props.fetchPostUser();
+    if (arrryas.length > 0) {
+      return (
+        <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
+          <WidgetSwiper
+            arrryas={arrryas}
+            setEnable={this.state.setEnable}
+            onTouchStart={() => this.setState({ setEnable: false })}
+            onTouchEnd={() => this.setState({ setEnable: true })}
+            onMomentumScrollEnd={() => this.setState({ setEnable: true })}
+          />
+          <View>
+            <FlatlistHorizontal arrryas={this.props.arraysBloc} />
+            <FlatListHomePage arrryas={this.props.arraysBloc} />
+            <Footer name={this.props.fullname} />
+          </View>
         </View>
-      </View >
-    );
+      );
+    }
   }
 }
