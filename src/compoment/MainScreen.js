@@ -1,6 +1,6 @@
-/* eslint-disable no-bitwise */
 /* eslint-disable prettier/prettier */
-import React, {PureComponent} from 'react';
+/* eslint-disable no-bitwise */
+import React, { PureComponent } from 'react';
 import {
   View,
   Animated,
@@ -11,25 +11,28 @@ import {
   Dimensions,
   ImageBackground,
 } from 'react-native';
-import {hendleShowList} from '../total/libs';
+import { hendleShowList } from '../total/libs';
 import {
   fill,
   header,
   backgroundImage,
   bar,
   title,
-  ViewContent,
   viewInput,
   input,
   imagesSeach,
   scrollViewContent,
 } from '../total/style';
 import WidgetSwiper from './widget/WidgetSwiper';
+import FlatlistHorizontal from './widget/FlatlistHorizontal';
+import SvgMessges from './widget/SvgMessges';
+import SvgSheare from './widget/SvgSheare';
+import FlatListHomePage from './widget/FlatListHomePage';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 export default class MainScreen extends PureComponent {
   state = {
     setEnable: true,
@@ -78,7 +81,7 @@ export default class MainScreen extends PureComponent {
           style={fill}
           scrollEventThrottle={1}
           onScroll={Animated.event(
-            [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}],
+            [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
             {
               useNativeDriver: true,
               listener: (event) => {
@@ -89,9 +92,9 @@ export default class MainScreen extends PureComponent {
                   (offsetY | 0) === 135 ||
                   (offsetY | 0) === 134
                 ) {
-                  this.setState({hideShowSeach: true});
+                  this.setState({ hideShowSeach: true });
                 } else if ((offsetY | 0) === 0) {
-                  this.setState({hideShowSeach: false});
+                  this.setState({ hideShowSeach: false });
                 }
               },
             },
@@ -102,14 +105,14 @@ export default class MainScreen extends PureComponent {
           pointerEvents="none"
           style={[
             header(HEADER_MAX_HEIGHT),
-            {transform: [{translateY: headerTranslate}]},
+            { transform: [{ translateY: headerTranslate }] },
           ]}>
           <Animated.Image
             style={[
               backgroundImage(HEADER_MAX_HEIGHT),
               {
                 opacity: imageOpacity,
-                transform: [{translateY: imageTranslate}],
+                transform: [{ translateY: imageTranslate }],
               },
             ]}
             source={require('../../images/cat.jpg')}
@@ -119,7 +122,7 @@ export default class MainScreen extends PureComponent {
           style={[
             bar,
             {
-              transform: [{scale: titleScale}, {translateY: titleTranslate}],
+              transform: [{ scale: titleScale }, { translateY: titleTranslate }],
             },
           ]}>
           <Text style={title}>DEVK</Text>
@@ -135,12 +138,12 @@ export default class MainScreen extends PureComponent {
             />
             <TextInput
               style={input}
-              onChangeText={(search) => this.setState({search})}
+              onChangeText={(search) => this.setState({ search })}
             />
           </View>
         ) : (
-          <View />
-        )}
+            <View />
+          )}
       </View>
     );
   }
@@ -150,50 +153,27 @@ export default class MainScreen extends PureComponent {
         <WidgetSwiper
           arrryas={arrryas}
           setEnable={this.state.setEnable}
-          onTouchStart={() => this.setState({setEnable: false})}
-          onTouchEnd={() => this.setState({setEnable: true})}
-          onMomentumScrollEnd={() => this.setState({setEnable: true})}
+          onTouchStart={() => this.setState({ setEnable: false })}
+          onTouchEnd={() => this.setState({ setEnable: true })}
+          onMomentumScrollEnd={() => this.setState({ setEnable: true })}
         />
         <View>
-          <View style={ViewContent}>
-            <View
-              style={{
-                margin: 10,
-                flex: 1,
-                borderBottomLeftRadius: 30,
-                borderBottomRightRadius: 15,
-                borderTopRightRadius: 30,
-                borderTopLeftRadius: 15,
-                overflow: 'hidden',
-                
-                borderTopWidth: 15,
-                borderRadius: 2,
-                borderColor: '#778899',
-                borderBottomWidth: 0,
-                shadowColor: '#00000',
-                shadowOffset: { width: 0, height: 2 },
-                shadowOpacity: 0.8,
-                shadowRadius: 2,
-                elevation: 1,
-                marginLeft: 5,
-                marginRight: 5,
-                marginTop: 10,
-                margin: 10,
-              }}>
-              <ImageBackground
-                style={{flex: 1}}
-                source={{
-                  uri:
-                    'https://raw.githubusercontent.com/AboutReact/sampleresource/master/old_logo.png',
-                }}>
-                <View style={{marginLeft: 5}}>
-                  <Text>ssssssssssssssss</Text>
-                  <Text style={{fontWeight: 'bold'}}>ssssssssssssssss</Text>
-                </View>
-              </ImageBackground>
-            </View>
-          </View>
+          <FlatlistHorizontal arrryas={this.props.arraysBloc} />
+          <FlatListHomePage arraysImage={this.props.arraysBloc[2].arraysImage} title={this.props.arraysBloc[2].title} />
           <View>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
+            <Text>sssssssssss</Text>
             <Text>sssssssssss</Text>
             <Text>sssssssssss</Text>
             <Text>sssssssssss</Text>
@@ -209,7 +189,7 @@ export default class MainScreen extends PureComponent {
             <Text>sssssssssss</Text>
           </View>
         </View>
-      </View>
+      </View >
     );
   }
 }
