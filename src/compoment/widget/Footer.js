@@ -1,5 +1,6 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-native/no-inline-styles */
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import {
   View,
   Text,
@@ -39,20 +40,20 @@ export default class Footer extends PureComponent {
           <View style={row}>
             <Text style={footterTextInfoName}>Name: </Text>
             <Text style={footterTextInfoName}> - </Text>
-            <Text style={[footterTextInfoName, {flex: 2}]}>
+            <Text style={[footterTextInfoName, { flex: 2 }]}>
               {this.props.name}
             </Text>
           </View>
           <View style={row}>
             <Text style={footterTextInfoName}>Age: </Text>
             <Text style={footterTextInfoName}> - </Text>
-            <Text style={[footterTextInfoName, {flex: 2}]}>24</Text>
+            <Text style={[footterTextInfoName, { flex: 2 }]}>{this.props.ages}</Text>
           </View>
           <View style={row}>
             <Text style={footterTextInfoName}>Jop: </Text>
             <Text style={footterTextInfoName}> - </Text>
-            <Text style={[footterTextInfoName, {flex: 2}]}>
-              Developer mobile{' '}
+            <Text style={[footterTextInfoName, { flex: 2 }]}>
+              {this.props.jobs}
             </Text>
           </View>
         </View>

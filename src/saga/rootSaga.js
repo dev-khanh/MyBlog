@@ -1,12 +1,12 @@
 /* eslint-disable prettier/prettier */
-import {all, fork, call} from 'redux-saga/effects';
-import {getBlocSaga, postUserSaga} from './apiSaga';
+import {all, fork} from 'redux-saga/effects';
+import {getBlocSaga, postUserSaga, postGetDelete, addNameData, deleteNameData} from './apiSaga';
 export default function* rootSaga() {
-  // yield call(getBlocSaga);
-  // yield call(postUserSaga);
-  // yield all([fork(getBlocSaga), fork(postUserSaga)]);
   yield all([
-    postUserSaga(),
-    getBlocSaga(),
+    fork(getBlocSaga),
+    fork(postUserSaga),
+    fork(postGetDelete),
+    fork(addNameData),
+    fork(deleteNameData),
   ]);
 }

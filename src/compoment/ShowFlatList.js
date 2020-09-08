@@ -6,7 +6,7 @@ import { htmlContent, scrollView, viewTiltes, imagesSoundView } from '../total/s
 let bloc = [];
 export default class ShowFlatList extends PureComponent {
   componentWillUnmount() {
-    console.log('componentWillUnmount');
+    // console.log('componentWillUnmount');
     bloc = [];
   }
   render() {

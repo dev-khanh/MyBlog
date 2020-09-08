@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, {PureComponent} from 'react';
-import {ImageBackground, View, Text} from 'react-native';
+import React, { PureComponent } from 'react';
+import { ImageBackground, View, Text, TouchableOpacity } from 'react-native';
 import SvgMessges from './SvgMessges';
 import SvgSheare from './SvgSheare';
 import {
@@ -22,16 +22,20 @@ export default class FlatListHomePage extends PureComponent {
         <View key={item.id} style={viewContainerHomePage}>
           <ImageBackground
             style={imagesBackgound}
-            source={{uri: item.arraysImage}}>
+            source={{ uri: item.arraysImage }}>
             <View style={positionHomePage}>
               <Text style={titleHomePage}> {item.title} </Text>
               <Text style={titleHomePage2}> {item.title} </Text>
               <View style={viewBetween}>
                 <View style={sytleViewContainMess}>
                   <SvgMessges style={stySvgMess} />
-                  <Text style={styleTextMesss}> 0 </Text>
+                  <TouchableOpacity onPress={this.props.onClickDelete}>
+                    <Text style={styleTextMesss}> 0 </Text>
+                  </TouchableOpacity>
                 </View>
-                <SvgSheare style={styleSvgSheare} />
+                <TouchableOpacity onPress={this.props.onPress}>
+                  <SvgSheare style={styleSvgSheare} />
+                </TouchableOpacity>
               </View>
             </View>
           </ImageBackground>

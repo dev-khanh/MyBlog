@@ -9,6 +9,7 @@ import {
   TextInput,
   Image,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import {hendleShowList} from '../total/libs';
 import {
@@ -21,11 +22,13 @@ import {
   input,
   imagesSeach,
   scrollViewContent,
+  animationImages,
 } from '../total/style';
 import WidgetSwiper from './widget/WidgetSwiper';
 import FlatlistHorizontal from './widget/FlatlistHorizontal';
 import FlatListHomePage from './widget/FlatListHomePage';
 import Footer from './widget/Footer';
+import moment from 'moment';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
@@ -44,9 +47,11 @@ export default class MainScreen extends PureComponent {
   }
   render() {
     // console.log(this.props.isEditing);
-    // if (this.props.arraysBloc != null){
-    //   arrryas = hendleShowList(this.props.arraysBloc);
-    // }
+    // console.log(this.props.fullname);
+
+    if (this.props.arraysBloc != null) {
+      arrryas = hendleShowList(this.props.arraysBloc);
+    }
     const scrollY = Animated.add(
       this.state.scrollY,
       Platform.OS === 'ios' ? HEADER_MAX_HEIGHT : 0,
@@ -77,98 +82,119 @@ export default class MainScreen extends PureComponent {
       outputRange: [0, 0, -8],
       extrapolate: 'clamp',
     });
-    return (
-      <View style={fill}>
-        <Animated.ScrollView
-          style={fill}
-          scrollEventThrottle={1}
-          onScroll={Animated.event(
-            [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}],
-            {
-              useNativeDriver: true,
-              listener: (event) => {
-                const offsetY = event.nativeEvent.contentOffset.y;
-                // console.log(offsetY | 0);
-                if (
-                  (offsetY | 0) === 136 ||
-                  (offsetY | 0) === 135 ||
-                  (offsetY | 0) === 134 ||
-                  (offsetY | 0) === 137
-                ) {
-                  this.setState({hideShowSeach: true});
-                } else if ((offsetY | 0) === 0) {
-                  this.setState({hideShowSeach: false});
-                }
-              },
-            },
-          )}>
-          {/* {this._renderScrollViewContent(arrryas)} */}
-        </Animated.ScrollView>
-        <Animated.View
-          pointerEvents="none"
-          style={[
-            header(HEADER_MAX_HEIGHT),
-            {transform: [{translateY: headerTranslate}]},
-          ]}>
-          <Animated.Image
-            style={[
-              backgroundImage(HEADER_MAX_HEIGHT),
+    if (this.props.isEditing) {
+      return (
+        <View style={fill}>
+          <Animated.ScrollView
+            style={fill}
+            scrollEventThrottle={1}
+            onScroll={Animated.event(
+              [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}],
               {
-                opacity: imageOpacity,
-                transform: [{translateY: imageTranslate}],
+                useNativeDriver: true,
+                listener: (event) => {
+                  const offsetY = event.nativeEvent.contentOffset.y;
+                  // console.log(offsetY | 0);
+                  if ((offsetY | 0) === 0) {
+                    this.setState({hideShowSeach: false});
+                  } else {
+                    this.setState({hideShowSeach: true});
+                  }
+                },
               },
-            ]}
-            source={require('../../images/cat.jpg')}
-          />
-        </Animated.View>
-        <Animated.View
-          style={[
-            bar,
-            {
-              transform: [{scale: titleScale}, {translateY: titleTranslate}],
-            },
-          ]}>
-          <Text style={title}>DEVK</Text>
-        </Animated.View>
-        {this.state.hideShowSeach === false ? (
-          <View style={viewInput}>
-            <Image
-              style={imagesSeach}
+            )}>
+            {this._renderScrollViewContent(arrryas)}
+          </Animated.ScrollView>
+          <Animated.View
+            pointerEvents="none"
+            style={[
+              header(HEADER_MAX_HEIGHT),
+              {transform: [{translateY: headerTranslate}]},
+            ]}>
+            <Animated.Image
+              style={[
+                backgroundImage(HEADER_MAX_HEIGHT),
+                animationImages(imageOpacity, imageTranslate),
+              ]}
               source={{
                 uri:
-                  'https://e7.pngegg.com/pngimages/886/318/png-clipart-computer-icons-edison-state-community-college-google-search-symbol-magnifying-glass-material-logo-google-logo.png',
+                  'https://www.contec-x.de/site/assets/files/1182/devk-versicherungen-weiss.png',
               }}
             />
-            <TextInput
-              style={input}
-              onChangeText={(search) => this.setState({search})}
-            />
-          </View>
-        ) : (
-          <View />
-        )}
+          </Animated.View>
+          <Animated.View
+            style={[
+              bar,
+              {
+                transform: [{scale: titleScale}, {translateY: titleTranslate}],
+              },
+            ]}>
+            <Text style={title}>DEVK</Text>
+          </Animated.View>
+          {this.state.hideShowSeach === false ? (
+            <View style={viewInput}>
+              <Image
+                style={imagesSeach}
+                source={{
+                  uri:
+                    'https://e7.pngegg.com/pngimages/886/318/png-clipart-computer-icons-edison-state-community-college-google-search-symbol-magnifying-glass-material-logo-google-logo.png',
+                }}
+              />
+              <TextInput
+                style={input}
+                placeholder="Search..."
+                onChangeText={(search) => this.setState({search})}
+                onFocus={() => {
+                  this.props.navigation.navigate('Seach');
+                }}
+              />
+            </View>
+          ) : (
+            <View />
+          )}
+        </View>
+      );
+    } else {
+      return <ActivityIndicator color={'#fff'} />;
+    }
+  }
+  _renderScrollViewContent(arrryas) {
+    return (
+      <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
+        <WidgetSwiper
+          arrryas={arrryas}
+          setEnable={this.state.setEnable}
+          onTouchStart={() => this.setState({setEnable: false})}
+          onTouchEnd={() => this.setState({setEnable: true})}
+          onMomentumScrollEnd={() => this.setState({setEnable: true})}
+        />
+        <View>
+          <FlatlistHorizontal arrryas={this.props.arraysBloc} />
+          <FlatListHomePage
+            arrryas={this.props.arraysBloc}
+            onPress={() => this.setOnClickMessge()}
+            onClickDelete={() => this.setOnClickDelete()}
+          />
+          <Footer
+            name={this.props.fullname}
+            ages={this.props.age}
+            jobs={this.props.jop}
+          />
+        </View>
       </View>
     );
   }
-  _renderScrollViewContent(arrryas) {
-    this.props.fetchPostUser();
-    if (arrryas.length > 0) {
-      return (
-        <View style={scrollViewContent(HEADER_MAX_HEIGHT)}>
-          <WidgetSwiper
-            arrryas={arrryas}
-            setEnable={this.state.setEnable}
-            onTouchStart={() => this.setState({setEnable: false})}
-            onTouchEnd={() => this.setState({setEnable: true})}
-            onMomentumScrollEnd={() => this.setState({setEnable: true})}
-          />
-          <View>
-            <FlatlistHorizontal arrryas={this.props.arraysBloc} />
-            <FlatListHomePage arrryas={this.props.arraysBloc} />
-            <Footer name={this.props.fullname}/>
-          </View>
-        </View>
-      );
-    }
-  }
+  setOnClickMessge = () => {
+    let payload = {
+      foodId: Math.random().toString(),
+      name: 'Duong Quoc Khanh',
+      dateCreated: moment(new Date()).format('DD/MM/YYYY'),
+    };
+    this.props.fectPostData(payload);
+  };
+  setOnClickDelete = () => {
+    this.props.fecthDeleteData({
+      foodId: 'e005458b-6b0b-49e5-8019-049b34902b4e',
+    });
+  };
 }

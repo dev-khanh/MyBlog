@@ -6,11 +6,11 @@ module.exports = {
   flex: {
     flex: 1,
   },
-  row:{
+  row: {
     flexDirection: 'row',
   },
   flex2: {
-    flex:2,
+    flex: 2,
   },
   FullView: {
     width: width,
@@ -92,6 +92,15 @@ module.exports = {
   //   fontSize: 30,
   //   fontWeight: 'bold',
   // },
+  animationImages: (imageOpacity, imageTranslate) => ({
+    opacity: imageOpacity,
+    transform: [{translateY: imageTranslate}],
+    width: '100%',
+    height: '60%',
+    marginTop: '20%',
+    alignItems: 'center',
+    backgroundColor: '#607d8b',
+  }),
   swiperContainer: {
     flex: 1,
     height: height,
@@ -114,7 +123,7 @@ module.exports = {
     top: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#03A9F4',
+    backgroundColor: 'black',
     overflow: 'hidden',
     height: HEADER_MAX_HEIGHT,
   }),
@@ -213,7 +222,7 @@ module.exports = {
 
   // FlatListHomePage
   viewContainerHomePage: {
-    backgroundColor: 'red', width: width * 0.96, height: 400, margin: 10,
+    width: width * 0.96, height: 400, margin: 10,
   },
   positionHomePage: {
     position: 'absolute',
@@ -265,7 +274,7 @@ module.exports = {
     backgroundColor: 'black',
     flexDirection: 'row',
   },
-  footterTextSocialchannel:{
+  footterTextSocialchannel: {
     color: 'white', margin: 5,
   },
   footterImages: {
@@ -274,7 +283,7 @@ module.exports = {
   footerTextInfo: {
     color: 'white', margin: 5, alignItems: 'center',
   },
-  footterTextInfoName:{
+  footterTextInfoName: {
     color: 'white', margin: 5, flex: 1,
   },
 };
