@@ -7,4 +7,3 @@ export const FETCH_FAILED = 'FETCH_FAILED';
 export const EVENt_POST_GET_DELETE = 'EVENt_POST_GET_DELETE';
 export const ADD_NAME_DATA = 'ADD_NAME_DATA';
 export const DELETE_DATA_NAME = 'DELETE_DATA_NAME';
-export const NEWDATA = 'NEWDATA';

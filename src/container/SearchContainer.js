@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import SearchFlatList from '../compoment/SearchFlatList';
-import {NEWDATA} from '../action/ActionTypes';
+import {SEND_PARAMS} from '../action/ActionTypes';
 const connectState = (state) => {
   return {
     arraysBloc: state.mainReducer.arraysBloc,
@@ -9,13 +9,8 @@ const connectState = (state) => {
 };
 const connectStateAPI = (dispatch) => {
   return {
-    searchFilterFunction: (text, arraysBloc) => {
-      const newData = arraysBloc.filter((item) => {
-        const itemData = `${item.title.toUpperCase()}`;
-        const textData = text.toUpperCase();
-        return itemData.indexOf(textData) > -1;
-      });
-      dispatch({type: NEWDATA, newData: newData});
+    sendParams: (data) => {
+      dispatch({type: SEND_PARAMS, arrayParams: data});
     },
   };
 };

@@ -1,7 +1,8 @@
+/* eslint-disable no-dupe-keys */
 /* eslint-disable prettier/prettier */
-import { Dimensions } from 'react-native';
-const { width, height } = Dimensions.get('window');
-import { Platform } from 'react-native';
+import {Dimensions} from 'react-native';
+const {width, height} = Dimensions.get('window');
+import {Platform} from 'react-native';
 module.exports = {
   flex: {
     flex: 1,
@@ -213,16 +214,26 @@ module.exports = {
     fontWeight: 'bold',
   },
   viewTextOverlod: {
-    width: width, height: 25, backgroundColor: 'black', position: 'absolute', bottom: 0, opacity: 0.8, alignItems: 'center', justifyContent: 'center',
+    width: width,
+    height: 25,
+    backgroundColor: 'black',
+    position: 'absolute',
+    bottom: 0,
+    opacity: 0.8,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textCountter: {
-    color: 'white', fontWeight: 'bold', fontSize: 20,
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 20,
   },
-
 
   // FlatListHomePage
   viewContainerHomePage: {
-    width: width * 0.96, height: 400, margin: 10,
+    width: width * 0.96,
+    height: 400,
+    margin: 10,
   },
   positionHomePage: {
     position: 'absolute',
@@ -248,10 +259,12 @@ module.exports = {
     lineHeight: 14,
   },
   viewBetween: {
-    flexDirection: 'row', justifyContent: 'space-between',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   stySvgMess: {
-    marginLeft: 10, marginTop: 5,
+    marginLeft: 10,
+    marginTop: 5,
   },
   styleTextMesss: {
     color: '#f4ff81',
@@ -260,12 +273,13 @@ module.exports = {
     fontWeight: 'bold',
   },
   styleSvgSheare: {
-    marginRight: 10, marginTop: 35,
+    marginRight: 10,
+    marginTop: 35,
   },
   sytleViewContainMess: {
-    flexDirection: 'row', marginTop: 30,
+    flexDirection: 'row',
+    marginTop: 30,
   },
-
 
   //  Footer
   footerViewContainer: {
@@ -275,16 +289,159 @@ module.exports = {
     flexDirection: 'row',
   },
   footterTextSocialchannel: {
-    color: 'white', margin: 5,
+    color: 'white',
+    margin: 5,
   },
   footterImages: {
-    marginTop: 20, marginLeft: 20, width: 70, height: 70,
+    marginTop: 20,
+    marginLeft: 20,
+    width: 70,
+    height: 70,
   },
   footerTextInfo: {
-    color: 'white', margin: 5, alignItems: 'center',
+    color: 'white',
+    margin: 5,
+    alignItems: 'center',
   },
   footterTextInfoName: {
-    color: 'white', margin: 5, flex: 1,
+    color: 'white',
+    margin: 5,
+    flex: 1,
+  },
+  //style option
+  StyleOptionScreen: {
+    borderTopWidth: 0,
+    elevation: 0,
+    shadowOpacity: 0,
+  },
+  headerImages: {
+    margin: 10,
+    width: 35,
+    height: 35,
+  },
+  renderSeparator: {
+    height: 1,
+    width: '95%',
+    backgroundColor: '#CED0CE',
+    // marginLeft: '14%',
+    margin: 10,
+    alignItems: 'center',
+  },
+  //Search Flatlist
+  searchView:{
+    width: '95%', marginLeft: 10,
+  },
+  searchViewImages:{
+    flexDirection: 'row', margin: 10, marginLeft: 0,
+  },
+  searchImages:{
+    width: 90, height: 90,
+  },
+  searchViewText:{
+    backgroundColor: '#f4ff81', width: '79%',
+  },
+  searchViewTextTitle:{
+    marginLeft: 10, marginTop: 10,
+  },
+
+
+  // NEON
+  styleView: {
+    width: '100%',
+    height: 50,
+    backgroundColor: 'white',
+  },
+  noenA: {
+    // position: 'absolute',
+    // top: 10,
+    left: 220,
+    // transform: 'translate(50%,-50%)',
+    transform: [
+      {perspective: 900},
+      {translateX: -Dimensions.get('window').width * 0.2},
+      {rotateY: '0deg'},
+    ],
+    textTransform: 'uppercase',
+    fontFamily: 'verdana',
+    fontSize: 36,
+    fontWeight: '700',
+    marginLeft: 10,
+    color: '#B6FF00',
+    // textShadow:
+    //   '1px 1px 1px #919191, 1px 2px 1px #919191, 1px 3px 1px #919191, 1px 4px 1px #919191, 1px 5px 1px #919191, 1px 6px 1px #919191, 1px 7px 1px #919191, 1px 8px 1px #919191, 1px 9px 1px #919191, 1px 10px 1px #919191, 1px 18px 6px rgba(16,16,16,0.4), 1px 22px 10px rgba(16,16,16,0.2), 1px 25px 35px rgba(16,16,16,0.2), 1px 30px 60px rgba(16,16,16,0.4)',
+    // textShadow:'0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF',
+    // textShadow:'0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF',
+    //from
+    textShadowColor: '#fff',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 10,
+    textShadowColor: '#fff',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 20,
+    textShadowColor: '#fff',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 30,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 40,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 70,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 80,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 100,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 150,
+
+  //   textShadow:
+  //     '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00',
+  //   textShadow:
+  //     '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00',
+  },
+  noenB: {
+    // position: 'absolute',
+    // top: 10,
+    left: 220,
+    // transform: 'translate(50%,-50%)',
+    transform: [
+      {perspective: 900},
+      {translateX: -Dimensions.get('window').width * 0.2},
+      {rotateY: '0deg'},
+    ],
+    textTransform: 'uppercase',
+    fontFamily: 'verdana',
+    fontSize: 36,
+    fontWeight: '700',
+    marginLeft: 10,
+    color: '#B6FF00',
+
+    textShadowColor: '#fff',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 5,
+    textShadowColor: '#fff',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 10,
+    textShadowColor: '#fff',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 15,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 20,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 35,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 40,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 50,
+    textShadowColor: '#B6FF00',
+    textShadowOffset: {width: 0, height: 0},
+    textShadowRadius: 75,
   },
 };
-

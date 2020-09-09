@@ -29,6 +29,7 @@ import FlatlistHorizontal from './widget/FlatlistHorizontal';
 import FlatListHomePage from './widget/FlatListHomePage';
 import Footer from './widget/Footer';
 import moment from 'moment';
+import NeonLed from './widget/NeonLed';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
@@ -38,7 +39,9 @@ let arrryas = [];
 export default class MainScreen extends PureComponent {
   state = {
     setEnable: true,
-    scrollY: new Animated.Value(Platform.OS === 'ios' ? -HEADER_MAX_HEIGHT : 0),
+    scrollY: new Animated.Value(
+      Platform.OS === 'ios' ? -HEADER_MAX_HEIGHT : 0,
+    ),
     search: '',
     hideShowSeach: false,
   };
@@ -46,9 +49,6 @@ export default class MainScreen extends PureComponent {
     this.props.fetchInitData();
   }
   render() {
-    // console.log(this.props.isEditing);
-    // console.log(this.props.fullname);
-
     if (this.props.arraysBloc != null) {
       arrryas = hendleShowList(this.props.arraysBloc);
     }
@@ -180,6 +180,7 @@ export default class MainScreen extends PureComponent {
             ages={this.props.age}
             jobs={this.props.jop}
           />
+          <NeonLed/>
         </View>
       </View>
     );

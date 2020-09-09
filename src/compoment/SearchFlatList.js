@@ -1,21 +1,22 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-bitwise */
 import React, {PureComponent} from 'react';
-import {View, Text, TextInput, Image, FlatList, Dimensions} from 'react-native';
-import {fill, viewInput, input, imagesSeach} from '../total/style';
+import {
+  View,
+  Text,
+  TextInput,
+  Image,
+  FlatList,
+  Dimensions,
+  TouchableOpacity,
+} from 'react-native';
+import {fill, viewInput, input, imagesSeach, renderSeparator, searchView, searchViewImages, searchImages, searchViewText, searchViewTextTitle} from '../total/style';
+import {searchFlatList} from '../total/libs';
 const {width, height} = Dimensions.get('window');
 export default class SearchFlatList extends PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [],
-    };
-  }
-  componentDidMount() {
-    this.setState({
-      data: this.props.arraysBloc,
-    });
-  }
+  state = {
+    data: this.props.arraysBloc,
+  };
   render() {
     return (
       <View style={fill}>
@@ -35,10 +36,9 @@ export default class SearchFlatList extends PureComponent {
           <View style={{width: width, height: height}}>
             <FlatList
               data={this.state.data}
-              renderItem={({item}) => this.renderItem(item)}
+              renderItem={({item, index}) => this.renderItem(item, index)}
               keyExtractor={(item) => item.id.toString()}
               ItemSeparatorComponent={this.renderSeparator}
-              //   ListHeaderComponent={this.renderHeader}
             />
           </View>
         </View>
@@ -47,32 +47,34 @@ export default class SearchFlatList extends PureComponent {
   }
   renderSeparator = () => {
     return (
-      <View
-        style={{
-          height: 1,
-          width: '86%',
-          backgroundColor: '#CED0CE',
-          marginLeft: '14%',
-        }}
-      />
+      <View style={renderSeparator} />
     );
   };
-  searchFilterFunction = (text) => {
-    this.props.searchFilterFunction(text, this.props.arraysBloc);
-    // const newData = this.props.arraysBloc.filter((item) => {
-    //   const itemData = `${item.title.toUpperCase()}`;
-    //   const textData = text.toUpperCase();
-    //   return itemData.indexOf(textData) > -1;
-    // });
-    this.setState({
-      data: this.props.newData,
-    });
-  };
-  renderItem = (item) => {
+  renderItem = (item, index) => {
+    // console.log(item);
     return (
-      <View>
-        <Text>{item.title}</Text>
+      <View style={searchView}>
+        <TouchableOpacity onPress={() => this.GetItem(item.title, index)}>
+          <View style={searchViewImages}>
+            <Image
+              source={{uri: item.arraysImage}}
+              style={searchImages}
+            />
+            <View style={searchViewText}>
+              <Text style={searchViewTextTitle}>{item.title}</Text>
+            </View>
+          </View>
+        </TouchableOpacity>
       </View>
     );
+  };
+  GetItem(title, index) {
+    this.props.sendParams({title, index});
+    this.props.navigation.navigate('Next');
+  }
+  searchFilterFunction = (text) => {
+    this.setState({
+      data: searchFlatList(text, this.props.arraysBloc),
+    });
   };
 }
