@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-bitwise */
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import {
   View,
   Animated,
@@ -11,7 +11,7 @@ import {
   Dimensions,
   ActivityIndicator,
 } from 'react-native';
-import { hendleShowList } from '../total/libs';
+import {hendleShowList} from '../total/libs';
 import {
   fill,
   header,
@@ -22,32 +22,33 @@ import {
   input,
   imagesSeach,
   scrollViewContent,
+  animationImages,
 } from '../total/style';
 import WidgetSwiper from './widget/WidgetSwiper';
 import FlatlistHorizontal from './widget/FlatlistHorizontal';
 import FlatListHomePage from './widget/FlatListHomePage';
 import Footer from './widget/Footer';
+import moment from 'moment';
+import NeonLed from './widget/NeonLed';
 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = Platform.OS === 'ios' ? 60 : 50;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
-const { width, height } = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 let arrryas = [];
 export default class MainScreen extends PureComponent {
   state = {
     setEnable: true,
-    scrollY: new Animated.Value(Platform.OS === 'ios' ? -HEADER_MAX_HEIGHT : 0),
+    scrollY: new Animated.Value(
+      Platform.OS === 'ios' ? -HEADER_MAX_HEIGHT : 0,
+    ),
     search: '',
     hideShowSeach: false,
   };
   componentDidMount() {
     this.props.fetchInitData();
-    this.props.fetchPostUser();
   }
   render() {
-    // console.log(this.props.isEditing);
-    // console.log(this.props.fullname);
-
     if (this.props.arraysBloc != null) {
       arrryas = hendleShowList(this.props.arraysBloc);
     }
@@ -82,29 +83,22 @@ export default class MainScreen extends PureComponent {
       extrapolate: 'clamp',
     });
     if (this.props.isEditing) {
-
       return (
-
         <View style={fill}>
           <Animated.ScrollView
             style={fill}
             scrollEventThrottle={1}
             onScroll={Animated.event(
-              [{ nativeEvent: { contentOffset: { y: this.state.scrollY } } }],
+              [{nativeEvent: {contentOffset: {y: this.state.scrollY}}}],
               {
                 useNativeDriver: true,
                 listener: (event) => {
                   const offsetY = event.nativeEvent.contentOffset.y;
                   // console.log(offsetY | 0);
-                  if (
-                    (offsetY | 0) === 136 ||
-                    (offsetY | 0) === 135 ||
-                    (offsetY | 0) === 134 ||
-                    (offsetY | 0) === 137
-                  ) {
-                    this.setState({ hideShowSeach: true });
-                  } else if ((offsetY | 0) === 0) {
-                    this.setState({ hideShowSeach: false });
+                  if ((offsetY | 0) === 0) {
+                    this.setState({hideShowSeach: false});
+                  } else {
+                    this.setState({hideShowSeach: true});
                   }
                 },
               },
@@ -115,24 +109,24 @@ export default class MainScreen extends PureComponent {
             pointerEvents="none"
             style={[
               header(HEADER_MAX_HEIGHT),
-              { transform: [{ translateY: headerTranslate }] },
+              {transform: [{translateY: headerTranslate}]},
             ]}>
             <Animated.Image
               style={[
                 backgroundImage(HEADER_MAX_HEIGHT),
-                {
-                  opacity: imageOpacity,
-                  transform: [{ translateY: imageTranslate }],
-                },
+                animationImages(imageOpacity, imageTranslate),
               ]}
-              source={require('../../images/cat.jpg')}
+              source={{
+                uri:
+                  'https://www.contec-x.de/site/assets/files/1182/devk-versicherungen-weiss.png',
+              }}
             />
           </Animated.View>
           <Animated.View
             style={[
               bar,
               {
-                transform: [{ scale: titleScale }, { translateY: titleTranslate }],
+                transform: [{scale: titleScale}, {translateY: titleTranslate}],
               },
             ]}>
             <Text style={title}>DEVK</Text>
@@ -148,18 +142,20 @@ export default class MainScreen extends PureComponent {
               />
               <TextInput
                 style={input}
-                onChangeText={(search) => this.setState({ search })}
+                placeholder="Search..."
+                onChangeText={(search) => this.setState({search})}
+                onFocus={() => {
+                  this.props.navigation.navigate('Seach');
+                }}
               />
             </View>
           ) : (
-              <View />
-            )}
+            <View />
+          )}
         </View>
       );
     } else {
-      return (
-        <ActivityIndicator color={"#fff"} />
-      );
+      return <ActivityIndicator color={'#fff'} />;
     }
   }
   _renderScrollViewContent(arrryas) {
@@ -168,16 +164,38 @@ export default class MainScreen extends PureComponent {
         <WidgetSwiper
           arrryas={arrryas}
           setEnable={this.state.setEnable}
-          onTouchStart={() => this.setState({ setEnable: false })}
-          onTouchEnd={() => this.setState({ setEnable: true })}
-          onMomentumScrollEnd={() => this.setState({ setEnable: true })}
+          onTouchStart={() => this.setState({setEnable: false})}
+          onTouchEnd={() => this.setState({setEnable: true})}
+          onMomentumScrollEnd={() => this.setState({setEnable: true})}
         />
         <View>
           <FlatlistHorizontal arrryas={this.props.arraysBloc} />
-          <FlatListHomePage arrryas={this.props.arraysBloc} />
-          <Footer name={this.props.fullname} ages={this.props.age} jobs={this.props.jop} />
+          <FlatListHomePage
+            arrryas={this.props.arraysBloc}
+            onPress={() => this.setOnClickMessge()}
+            onClickDelete={() => this.setOnClickDelete()}
+          />
+          <Footer
+            name={this.props.fullname}
+            ages={this.props.age}
+            jobs={this.props.jop}
+          />
+          <NeonLed/>
         </View>
       </View>
     );
   }
+  setOnClickMessge = () => {
+    let payload = {
+      foodId: Math.random().toString(),
+      name: 'Duong Quoc Khanh',
+      dateCreated: moment(new Date()).format('DD/MM/YYYY'),
+    };
+    this.props.fectPostData(payload);
+  };
+  setOnClickDelete = () => {
+    this.props.fecthDeleteData({
+      foodId: 'e005458b-6b0b-49e5-8019-049b34902b4e',
+    });
+  };
 }

@@ -42,3 +42,11 @@ export function reformatDate(item) {
     var dArr = dt[0].split('-');  // ex input "2010-01-18"
     return dArr[2] + '/' + dArr[1] + '/' + '20' + dArr[0].substring(2); //ex out: "18/01/10"
 }
+export function searchFlatList(text, array){
+    const newData = array.filter((item) => {
+      const itemData = `${item.title.toUpperCase()}`;
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    return newData;
+}

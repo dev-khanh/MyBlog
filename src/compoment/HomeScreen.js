@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-import React, { PureComponent } from 'react';
-import { View, Text, FlatList, Image} from 'react-native';
+import React, {PureComponent} from 'react';
+import {View, Text, FlatList, Image, TouchableOpacity} from 'react-native';
 import {
   MainContainer,
   textView,
@@ -8,7 +8,7 @@ import {
   containerViewImages,
   viewContain,
 } from '../total/style';
-import { splitImages } from '../total/libs';
+import {splitImages} from '../total/libs';
 export default class HomeScreen extends PureComponent {
   render() {
     return (
@@ -16,15 +16,14 @@ export default class HomeScreen extends PureComponent {
         <FlatList
           data={splitImages(this.props.arraysBloc)}
           ItemSeparatorComponent={this.FlatListItemSeparator}
-          renderItem={({ item, index }) => (
-            <View style={containerViewImages}>
-              <Image source={{ uri: item.arraysImage }} style={imageView} />
-              <Text
-                onPress={this.GetItem.bind(this, item.title, index)}
-                style={textView}>
-                {item.title}
-              </Text>
-            </View>
+          renderItem={({item, index}) => (
+            <TouchableOpacity
+              onPress={this.GetItem.bind(this, item.title, index)}>
+              <View style={containerViewImages}>
+                <Image source={{uri: item.arraysImage}} style={imageView} />
+                <Text style={textView}>{item.title}</Text>
+              </View>
+            </TouchableOpacity>
           )}
           keyExtractor={(item, index) => index.toString()}
         />
@@ -35,7 +34,7 @@ export default class HomeScreen extends PureComponent {
     return <View style={viewContain} />;
   };
   GetItem(flower_name, index) {
-    this.props.sendParams({ flower_name, index });
+    this.props.sendParams({flower_name, index});
     this.props.navigation.navigate('Next');
   }
 }
