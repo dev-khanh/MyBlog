@@ -4,6 +4,16 @@ import {Dimensions} from 'react-native';
 const {width, height} = Dimensions.get('window');
 import {Platform} from 'react-native';
 module.exports = {
+  container:{
+    flex: 1,
+    paddingTop: 10,
+  },
+  marginTop: {
+    marginTop: height * 0.16,
+  },
+  marginTopHeight: {
+    marginTop: height * 0.052,
+  },
   flex: {
     flex: 1,
   },
@@ -47,6 +57,9 @@ module.exports = {
     height: 0.5,
     width: '100%',
     backgroundColor: '#000',
+  },
+  colorGray:{
+    color: 'gray',
   },
   htmlContent: {
     // fontWeight: '300',
@@ -328,22 +341,27 @@ module.exports = {
     alignItems: 'center',
   },
   //Search Flatlist
-  searchView:{
-    width: '95%', marginLeft: 10,
+  searchView: {
+    width: '95%',
+    marginLeft: 10,
   },
-  searchViewImages:{
-    flexDirection: 'row', margin: 10, marginLeft: 0,
+  searchViewImages: {
+    flexDirection: 'row',
+    margin: 10,
+    marginLeft: 0,
   },
-  searchImages:{
-    width: 90, height: 90,
+  searchImages: {
+    width: 90,
+    height: 90,
   },
-  searchViewText:{
-    backgroundColor: '#f4ff81', width: '79%',
+  searchViewText: {
+    backgroundColor: '#f4ff81',
+    width: '79%',
   },
-  searchViewTextTitle:{
-    marginLeft: 10, marginTop: 10,
+  searchViewTextTitle: {
+    marginLeft: 10,
+    marginTop: 10,
   },
-
 
   // NEON
   styleView: {
@@ -397,10 +415,10 @@ module.exports = {
     textShadowOffset: {width: 0, height: 0},
     textShadowRadius: 150,
 
-  //   textShadow:
-  //     '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00',
-  //   textShadow:
-  //     '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00',
+    //   textShadow:
+    //     '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #B6FF00, 0 0 70px #B6FF00, 0 0 80px #B6FF00, 0 0 100px #B6FF00, 0 0 150px #B6FF00',
+    //   textShadow:
+    //     '0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #B6FF00, 0 0 35px #B6FF00, 0 0 40px #B6FF00, 0 0 50px #B6FF00, 0 0 75px #B6FF00',
   },
   noenB: {
     // position: 'absolute',
@@ -443,5 +461,109 @@ module.exports = {
     textShadowColor: '#B6FF00',
     textShadowOffset: {width: 0, height: 0},
     textShadowRadius: 75,
+  },
+
+  // HeaderInfor
+  linearGradient: {
+    width: width,
+    height: 100,
+    backgroundColor: 'rgba(255, 0, 255, 1.5)',
+    transform: [{perspective: 10}, {translateX: width}, {rotateY: '2deg'}],
+  },
+  viewImagesHeader: {
+    position: 'absolute',
+    right: 60,
+    top: 110,
+    width: 90,
+    height: 90,
+    borderRadius: 180,
+    elevation: 20,
+    shadowOffset: {width: 0, height: 0},
+    shadowColor: 'black',
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
+  },
+  textSytleHeader: {
+    position: 'absolute',
+    top: 0,
+    margin: 10,
+    fontSize: 35,
+    fontWeight: 'bold',
+    color: 'white',
+  },
+  imagesHeader: {
+    width: 90,
+    height: 90,
+    borderRadius: 90,
+    borderWidth: 2,
+  },
+  textSytleemail: {
+    position: 'absolute',
+    top: 40,
+    margin: 10,
+    fontSize: 25,
+    color: 'white',
+  },
+
+  // CardView
+  containerCard: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingTop: 10,
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+    alignItems: 'center',
+  },
+  card: {
+    height: 50,
+    width: '80%',
+    backgroundColor: 'white',
+    borderRadius: 15,
+    elevation: 10,
+    padding: 10,
+  },
+  profileImgCard: {
+    width: 30,
+    height: 30,
+    borderRadius: 50,
+    marginRight: 5,
+  },
+  textCard:{
+    fontWeight: 'bold', fontSize: 18, marginTop: 2,
+  },
+
+  //CardView PDF
+  containerCardPDF: {
+    flex: 1,
+    justifyContent: 'center',
+    backgroundColor: '#ecf0f1',
+    padding: 8,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  cardPDF: {
+    height: 140,
+    width: '100%',
+    backgroundColor: 'white',
+    borderRadius: 15,
+    elevation: 10,
+    padding: 10,
+  },
+  profileImgCardPDF: {
+    width: 120,
+    height: 120,
+    borderRadius: 50,
+    marginRight: 5,
+  },
+  textCardPDF: {
+    fontWeight: 'bold',
+    fontSize: 30,
+    marginTop: 15,
+  },
+  colorGrayPDF: {
+    color: 'gray',
+    marginTop: 8,
+    fontSize: 26,
+    marginLeft: 2,
   },
 };

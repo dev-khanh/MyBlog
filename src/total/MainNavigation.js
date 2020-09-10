@@ -10,9 +10,10 @@ import ShowContainer from '../container/ShowContainer';
 import SettingsScreen from '../compoment/SettingsScreen';
 import MainScreenContainer from '../container/MainScreenContainer';
 import HeaderLogo from '../compoment/widget/HeaderLogo';
-import InforUser from '../compoment/InforUser';
 import SearchContainer from '../container/SearchContainer';
 import {StyleOptionScreen} from './style';
+import InforUserContainer from '../container/InforUserContainer';
+import ShowPDFContainer from '../container/ShowPDFContainer';
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 function StackHomeTab() {
@@ -33,10 +34,19 @@ function StackMainTab() {
     </Stack.Navigator>
   );
 }
+function StackInfoUser() {
+  return (
+    <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="Infor">
+      <Stack.Screen name="Infor" component={InforUserContainer} />
+      <Stack.Screen name="ShowPDF" component={ShowPDFContainer} />
+    </Stack.Navigator>
+  );
+}
 function TabsNaviga() {
   return (
     <Tabs.Navigator
-      initialRouteName="Main"
       screenOptions={({route}) => ({
         tabBarIcon: ({focused, color, size}) => {
           let iconName;
@@ -67,11 +77,12 @@ function TabsNaviga() {
       tabBarOptions={{
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
-      }}>
+      }}
+      initialRouteName="Infor">
       <Tabs.Screen name="Main" component={StackMainTab} />
       <Tabs.Screen name="Home" component={StackHomeTab} />
       <Tabs.Screen name="Settings" component={SettingsScreen} />
-      <Tabs.Screen name="Infor" component={InforUser} />
+      <Tabs.Screen name="Infor" component={StackInfoUser} />
     </Tabs.Navigator>
   );
 }
@@ -103,10 +114,14 @@ function MainNavigation() {
           component={ShowContainer}
           options={{
             style: StyleOptionScreen,
-            header: ({navigation}) => <HeaderLogo sendPop={() => {
-              navigation.pop();
-              navigation.pop();
-            }} />,
+            header: ({navigation}) => (
+              <HeaderLogo
+                sendPop={() => {
+                  navigation.pop();
+                  navigation.pop();
+                }}
+              />
+            ),
           }}
         />
       </Stack.Navigator>
