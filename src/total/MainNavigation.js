@@ -42,6 +42,7 @@ function StackInfoUser() {
       initialRouteName="Infor">
       <Stack.Screen name="Infor" component={InforUserContainer} />
       <Stack.Screen name="ShowPDF" component={ShowPDFContainer} />
+      <Stack.Screen name="MapView" component={ShowMapView} />
     </Stack.Navigator>
   );
 }

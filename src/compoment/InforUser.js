@@ -38,6 +38,7 @@ class InforUser extends Component {
         </View>
         <View style={marginTopHeight}>
           <CardView
+            call={() => this.setOnClickCallMap()}
             textName="176 Nguyen Thi Thap, Q7, HCM"
             profileImg="https://e7.pngegg.com/pngimages/525/794/png-clipart-green-map-navigation-icon-wellington-high-school-new-york-city-unity-hospital-address-wakefield-location-icon-miscellaneous-angle-thumbnail.png"
           />
@@ -66,6 +67,9 @@ class InforUser extends Component {
       title: 'https://tpkvidamme.blogspot.com/',
     });
     this.props.navigation.navigate('ShowPDF');
+  };
+  setOnClickCallMap = () => {
+    this.props.navigation.navigate('MapView');
   };
 }
 export default InforUser;
