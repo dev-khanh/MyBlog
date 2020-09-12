@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {View, Linking} from 'react-native';
+/* eslint-disable prettier/prettier */
+import React, { Component } from 'react';
+import { View, Linking } from 'react-native';
 import HeaderInfor from './widget/HeaderInfor';
-import {flex, marginTop, marginTopHeight} from '../total/style';
+import { flex, marginTop, marginTopHeight } from '../total/style';
 import CardView from './widget/CardView';
 import CardViewFlatList from './widget/CardViewFlatList';
 class InforUser extends Component {
@@ -43,7 +44,7 @@ class InforUser extends Component {
             profileImg="https://e7.pngegg.com/pngimages/525/794/png-clipart-green-map-navigation-icon-wellington-high-school-new-york-city-unity-hospital-address-wakefield-location-icon-miscellaneous-angle-thumbnail.png"
           />
         </View>
-        <View style={{marginTop: 100}}>
+        <View style={{ marginTop: 100 }}>
           <CardViewFlatList rendPDF={() => this.setOnclickCard()} />
         </View>
       </View>

@@ -1,10 +1,10 @@
-/* eslint-disable no-dupe-keys */
 /* eslint-disable prettier/prettier */
-import {Dimensions} from 'react-native';
-const {width, height} = Dimensions.get('window');
-import {Platform} from 'react-native';
+/* eslint-disable no-dupe-keys */
+import { Dimensions, StyleSheet } from 'react-native';
+const { width, height } = Dimensions.get('window');
+import { Platform } from 'react-native';
 module.exports = {
-  container:{
+  container: {
     flex: 1,
     paddingTop: 10,
   },
@@ -58,7 +58,7 @@ module.exports = {
     width: '100%',
     backgroundColor: '#000',
   },
-  colorGray:{
+  colorGray: {
     color: 'gray',
   },
   htmlContent: {
@@ -108,7 +108,7 @@ module.exports = {
   // },
   animationImages: (imageOpacity, imageTranslate) => ({
     opacity: imageOpacity,
-    transform: [{translateY: imageTranslate}],
+    transform: [{ translateY: imageTranslate }],
     width: '100%',
     height: '60%',
     marginTop: '20%',
@@ -375,9 +375,9 @@ module.exports = {
     left: 220,
     // transform: 'translate(50%,-50%)',
     transform: [
-      {perspective: 900},
-      {translateX: -Dimensions.get('window').width * 0.2},
-      {rotateY: '0deg'},
+      { perspective: 900 },
+      { translateX: -Dimensions.get('window').width * 0.2 },
+      { rotateY: '0deg' },
     ],
     textTransform: 'uppercase',
     fontFamily: 'verdana',
@@ -391,28 +391,28 @@ module.exports = {
     // textShadow:'0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF',
     //from
     textShadowColor: '#fff',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 10,
     textShadowColor: '#fff',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
     textShadowColor: '#fff',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 30,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 40,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 70,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 80,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 100,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 150,
 
     //   textShadow:
@@ -426,9 +426,9 @@ module.exports = {
     left: 220,
     // transform: 'translate(50%,-50%)',
     transform: [
-      {perspective: 900},
-      {translateX: -Dimensions.get('window').width * 0.2},
-      {rotateY: '0deg'},
+      { perspective: 900 },
+      { translateX: -Dimensions.get('window').width * 0.2 },
+      { rotateY: '0deg' },
     ],
     textTransform: 'uppercase',
     fontFamily: 'verdana',
@@ -438,28 +438,28 @@ module.exports = {
     color: '#B6FF00',
 
     textShadowColor: '#fff',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 5,
     textShadowColor: '#fff',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 10,
     textShadowColor: '#fff',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 15,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 20,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 35,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 40,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 50,
     textShadowColor: '#B6FF00',
-    textShadowOffset: {width: 0, height: 0},
+    textShadowOffset: { width: 0, height: 0 },
     textShadowRadius: 75,
   },
 
@@ -468,7 +468,7 @@ module.exports = {
     width: width,
     height: 100,
     backgroundColor: 'rgba(255, 0, 255, 1.5)',
-    transform: [{perspective: 10}, {translateX: width}, {rotateY: '2deg'}],
+    transform: [{ perspective: 10 }, { translateX: width }, { rotateY: '2deg' }],
   },
   viewImagesHeader: {
     position: 'absolute',
@@ -478,7 +478,7 @@ module.exports = {
     height: 90,
     borderRadius: 180,
     elevation: 20,
-    shadowOffset: {width: 0, height: 0},
+    shadowOffset: { width: 0, height: 0 },
     shadowColor: 'black',
     shadowOpacity: 0.8,
     shadowRadius: 5,
@@ -528,7 +528,7 @@ module.exports = {
     borderRadius: 50,
     marginRight: 5,
   },
-  textCard:{
+  textCard: {
     fontWeight: 'bold', fontSize: 18, marginTop: 2,
   },
 
@@ -565,5 +565,21 @@ module.exports = {
     marginTop: 8,
     fontSize: 26,
     marginLeft: 2,
+  },
+
+  // SHOW MAP VIEW
+  ViewIconMapClick: {
+    position: 'absolute', bottom: 10, right: 10, width: 60, height: 60, borderRadius: 180, alignItems: 'center', justifyContent: 'center',
+  },
+  imagesMapIcon: {
+    width: 50, height: 50,
+  },
+  containerMap: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
   },
 };

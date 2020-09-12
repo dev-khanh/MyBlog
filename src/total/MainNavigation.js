@@ -14,7 +14,7 @@ import SearchContainer from '../container/SearchContainer';
 import { StyleOptionScreen } from './style';
 import InforUserContainer from '../container/InforUserContainer';
 import ShowPDFContainer from '../container/ShowPDFContainer';
-import ShowMapView from '../compoment/ShowMapView';
+import ShowMapViewContainer from '../container/ShowMapViewContainer';
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 function StackHomeTab() {
@@ -42,7 +42,7 @@ function StackInfoUser() {
       initialRouteName="Infor">
       <Stack.Screen name="Infor" component={InforUserContainer} />
       <Stack.Screen name="ShowPDF" component={ShowPDFContainer} />
-      <Stack.Screen name="MapView" component={ShowMapView} />
+      <Stack.Screen name="MapView" component={ShowMapViewContainer} />
     </Stack.Navigator>
   );
 }
