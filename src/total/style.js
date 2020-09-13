@@ -9,10 +9,10 @@ module.exports = {
     paddingTop: 10,
   },
   marginTop: {
-    marginTop: height * 0.16,
+    marginTop: height * 0.15,
   },
   marginTopHeight: {
-    marginTop: height * 0.052,
+    marginTop: height * 0.002,
   },
   flex: {
     flex: 1,
@@ -581,5 +581,34 @@ module.exports = {
   },
   map: {
     ...StyleSheet.absoluteFillObject,
+  },
+  //CARD LIST
+  textCardList: {
+    fontWeight: 'bold',
+    fontSize: 24,
+    marginTop: 15,
+  },
+  colorGrayPDFCardList: {
+    color: 'gray',
+    marginTop: 8,
+    fontSize: 22,
+    marginLeft: 2,
+  },
+  containerCardPDFCardList: {
+    width: width * 0.964,
+    justifyContent: 'center',
+    // backgroundColor: '#ecf0f1',
+    padding: 8,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  containerViewCardList: {
+    width: width * 0.66, alignItems: 'flex-end',
+  },
+  contaienrViewButtonCardList: {
+    backgroundColor: '#689f38', width: 100, height: 40, justifyContent: 'center', alignItems: 'center', borderRadius: 5,
+  },
+  containerViewTextCardList: {
+    color: 'white', fontWeight: 'bold', fontSize: 18,
   },
 };

@@ -1,13 +1,19 @@
-import React, {PureComponent} from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+/* eslint-disable prettier/prettier */
+import React, { PureComponent } from 'react';
+import { NativeModules } from 'react-native';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import allReducer from './src/reducer';
 import createAppMiddleware from 'redux-saga';
 import rootSaga from './src/saga/rootSaga';
 import MainNavigation from './src/total/MainNavigation';
 const SagaMiddleware = createAppMiddleware();
 const store = createStore(allReducer, applyMiddleware(SagaMiddleware));
+const { AutoApkModules } = NativeModules;
 export default class App extends PureComponent {
+  componentDidMount() {
+    AutoApkModules.initSettings();
+  }
   render() {
     return (
       <Provider store={store}>

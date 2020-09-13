@@ -1,52 +1,59 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { View, Linking } from 'react-native';
+import { View, Linking, ScrollView, NativeModules } from 'react-native';
 import HeaderInfor from './widget/HeaderInfor';
 import { flex, marginTop, marginTopHeight } from '../total/style';
 import CardView from './widget/CardView';
 import CardViewFlatList from './widget/CardViewFlatList';
+import CardList from './widget/CardList';
+const { AutoApkModules } = NativeModules;
 class InforUser extends Component {
   render() {
     return (
       <View style={flex}>
-        <HeaderInfor />
-        <View style={marginTop}>
-          <CardView
-            textName="Duong Quoc Khanh"
-            profileImg="https://banner2.cleanpng.com/20180715/pjs/kisspng-businessperson-computer-icons-clip-art-red-bus-icon-5b4affbfc57958.6944989215316417918089.jpg"
-          />
-        </View>
-        <View style={marginTopHeight}>
-          <CardView
-            call={() => this.setOnClickCallNumber()}
-            textName="+(84) 0344 34 1900"
-            profileImg="https://img.favpng.com/7/21/25/whatsapp-mobile-phones-messaging-apps-email-png-favpng-g8Y1Wrnm67ZdYVabdaCpbJwcJ.jpg"
-          />
-        </View>
-        <View style={marginTopHeight}>
-          <CardView
-            call={() => this.setOnClickCallEmail()}
-            textName="devdqkhanh@gmail.com"
-            profileImg="https://www.clipartmax.com/png/middle/116-1167514_email-icon-color-a-beam-asm-pst-20k-frame-rails-frames-envelope.png"
-          />
-        </View>
-        <View style={marginTopHeight}>
-          <CardView
-            call={() => this.setOnClickCallWeb()}
-            textName="www.tpkvidamme.blogspot.com"
-            profileImg="https://www.druckerfachmann.de/wp-content/uploads/2014/08/DEVK-Logo-wag-rgb_gro%C3%9F1.png"
-          />
-        </View>
-        <View style={marginTopHeight}>
-          <CardView
-            call={() => this.setOnClickCallMap()}
-            textName="176 Nguyen Thi Thap, Q7, HCM"
-            profileImg="https://e7.pngegg.com/pngimages/525/794/png-clipart-green-map-navigation-icon-wellington-high-school-new-york-city-unity-hospital-address-wakefield-location-icon-miscellaneous-angle-thumbnail.png"
-          />
-        </View>
-        <View style={{ marginTop: 100 }}>
-          <CardViewFlatList rendPDF={() => this.setOnclickCard()} />
-        </View>
+        <ScrollView>
+          <HeaderInfor />
+          <View style={marginTop}>
+            <CardView
+              textName="Duong Quoc Khanh"
+              profileImg="https://banner2.cleanpng.com/20180715/pjs/kisspng-businessperson-computer-icons-clip-art-red-bus-icon-5b4affbfc57958.6944989215316417918089.jpg"
+            />
+          </View>
+          <View style={marginTopHeight}>
+            <CardView
+              call={() => this.setOnClickCallNumber()}
+              textName="+(84) 0344 34 1900"
+              profileImg="https://img.favpng.com/7/21/25/whatsapp-mobile-phones-messaging-apps-email-png-favpng-g8Y1Wrnm67ZdYVabdaCpbJwcJ.jpg"
+            />
+          </View>
+          <View style={marginTopHeight}>
+            <CardView
+              call={() => this.setOnClickCallEmail()}
+              textName="devdqkhanh@gmail.com"
+              profileImg="https://www.clipartmax.com/png/middle/116-1167514_email-icon-color-a-beam-asm-pst-20k-frame-rails-frames-envelope.png"
+            />
+          </View>
+          <View style={marginTopHeight}>
+            <CardView
+              call={() => this.setOnClickCallWeb()}
+              textName="www.tpkvidamme.blogspot.com"
+              profileImg="https://www.druckerfachmann.de/wp-content/uploads/2014/08/DEVK-Logo-wag-rgb_gro%C3%9F1.png"
+            />
+          </View>
+          <View style={marginTopHeight}>
+            <CardView
+              call={() => this.setOnClickCallMap()}
+              textName="176 Nguyen Thi Thap, Q7, HCM"
+              profileImg="https://e7.pngegg.com/pngimages/525/794/png-clipart-green-map-navigation-icon-wellington-high-school-new-york-city-unity-hospital-address-wakefield-location-icon-miscellaneous-angle-thumbnail.png"
+            />
+          </View>
+          <View style={marginTopHeight}>
+            <CardViewFlatList rendPDF={() => this.setOnclickCard()} />
+          </View>
+          <View style={marginTopHeight}>
+            <CardList clickInstallsApp={(id) => this.setOnClickInstallApp(id)} />
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -72,5 +79,12 @@ class InforUser extends Component {
   setOnClickCallMap = () => {
     this.props.navigation.navigate('MapView');
   };
+  setOnClickInstallApp = (id) => {
+    if (id === '') {
+      AutoApkModules.SetEventUpdate('https://github.com/dev-khanh/flutter_demo/raw/master/lib/apk/app-release.apk');
+    } else {
+      Linking.openURL('market://details?id=' + id);
+    }
+  }
 }
 export default InforUser;
