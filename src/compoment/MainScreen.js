@@ -171,6 +171,7 @@ export default class MainScreen extends PureComponent {
         <View>
           <FlatlistHorizontal arrryas={this.props.arraysBloc} />
           <FlatListHomePage
+            eventClickPage={(item) => this.props.setEventClickpage(item, this.props.navigation)}
             arrryas={this.props.arraysBloc}
             onPress={() => this.setOnClickMessge()}
             onClickDelete={() => this.setOnClickDelete()}
@@ -185,6 +186,8 @@ export default class MainScreen extends PureComponent {
       </View>
     );
   }
+  // this.props.sendParams({title, index});
+  //   this.props.navigation.navigate('Next');
   setOnClickMessge = () => {
     let payload = {
       foodId: Math.random().toString(),

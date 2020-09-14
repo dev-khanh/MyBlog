@@ -52,7 +52,7 @@ export default class CardViewFlatList extends PureComponent {
         );
     }
     renderItem = (item) => {
-        console.log(item.id);
+        // console.log(item.id);
         return (
             <View style={containerCardPDFCardList}>
                 <View style={cardPDF}>

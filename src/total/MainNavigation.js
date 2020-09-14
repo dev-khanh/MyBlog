@@ -32,6 +32,7 @@ function StackMainTab() {
       initialRouteName="Main">
       <Stack.Screen name="Main" component={MainScreenContainer} />
       <Stack.Screen name="Seach" component={SearchContainer} />
+      <Stack.Screen name="Next" component={ShowContainer} />
     </Stack.Navigator>
   );
 }
