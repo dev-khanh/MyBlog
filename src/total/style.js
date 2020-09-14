@@ -1,18 +1,18 @@
-/* eslint-disable no-dupe-keys */
 /* eslint-disable prettier/prettier */
-import {Dimensions} from 'react-native';
+/* eslint-disable no-dupe-keys */
+import {Dimensions, StyleSheet} from 'react-native';
 const {width, height} = Dimensions.get('window');
 import {Platform} from 'react-native';
 module.exports = {
-  container:{
+  container: {
     flex: 1,
     paddingTop: 10,
   },
   marginTop: {
-    marginTop: height * 0.16,
+    marginTop: height * 0.15,
   },
   marginTopHeight: {
-    marginTop: height * 0.052,
+    marginTop: height * 0.002,
   },
   flex: {
     flex: 1,
@@ -58,7 +58,7 @@ module.exports = {
     width: '100%',
     backgroundColor: '#000',
   },
-  colorGray:{
+  colorGray: {
     color: 'gray',
   },
   htmlContent: {
@@ -248,13 +248,22 @@ module.exports = {
     height: 400,
     margin: 10,
   },
-  positionHomePage: {
+  positionHomePage: (id) => ({
     position: 'absolute',
     bottom: 0,
     width: width * 0.96,
-    height: height * 0.17,
+    height:
+      id === '3813390443961573838'
+        ? height * 0.19
+        : id === '4188871144786566867'
+        ? height * 0.15
+        : id === '4991738477791296837'
+        ? height * 0.15
+        : id === '5666055901254983476'
+        ? height * 0.15
+        : height * 0.17,
     backgroundColor: '#263238',
-  },
+  }),
   titleHomePage: {
     color: 'white',
     marginLeft: 10,
@@ -297,7 +306,7 @@ module.exports = {
   //  Footer
   footerViewContainer: {
     width: width,
-    height: height * 0.16,
+    height: height * 0.18,
     backgroundColor: 'black',
     flexDirection: 'row',
   },
@@ -367,16 +376,17 @@ module.exports = {
   styleView: {
     width: '100%',
     height: 50,
+    alignItems: 'center',
     backgroundColor: 'white',
   },
   noenA: {
     // position: 'absolute',
     // top: 10,
-    left: 220,
+    // left: 220,
     // transform: 'translate(50%,-50%)',
     transform: [
       {perspective: 900},
-      {translateX: -Dimensions.get('window').width * 0.2},
+      {translateX: -Dimensions.get('window').width * -0.2},
       {rotateY: '0deg'},
     ],
     textTransform: 'uppercase',
@@ -423,7 +433,7 @@ module.exports = {
   noenB: {
     // position: 'absolute',
     // top: 10,
-    left: 220,
+    // left: 220,
     // transform: 'translate(50%,-50%)',
     transform: [
       {perspective: 900},
@@ -465,7 +475,7 @@ module.exports = {
 
   // HeaderInfor
   linearGradient: {
-    width: width,
+    width: width + 20,
     height: 100,
     backgroundColor: 'rgba(255, 0, 255, 1.5)',
     transform: [{perspective: 10}, {translateX: width}, {rotateY: '2deg'}],
@@ -528,8 +538,10 @@ module.exports = {
     borderRadius: 50,
     marginRight: 5,
   },
-  textCard:{
-    fontWeight: 'bold', fontSize: 18, marginTop: 2,
+  textCard: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    marginTop: 2,
   },
 
   //CardView PDF
@@ -557,13 +569,74 @@ module.exports = {
   },
   textCardPDF: {
     fontWeight: 'bold',
-    fontSize: 30,
+    fontSize: 25,
     marginTop: 15,
   },
   colorGrayPDF: {
     color: 'gray',
     marginTop: 8,
-    fontSize: 26,
+    fontSize: 22,
     marginLeft: 2,
+  },
+
+  // SHOW MAP VIEW
+  ViewIconMapClick: {
+    position: 'absolute',
+    bottom: 10,
+    right: 10,
+    width: 60,
+    height: 60,
+    borderRadius: 180,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  imagesMapIcon: {
+    width: 50,
+    height: 50,
+  },
+  containerMap: {
+    ...StyleSheet.absoluteFillObject,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  map: {
+    ...StyleSheet.absoluteFillObject,
+  },
+  //CARD LIST
+  textCardList: (index) => ({
+    fontWeight: 'bold',
+    fontSize: index !== 'com.smartbus_qc' ? 24 : 22,
+    marginTop: index !== 'com.smartbus_qc' ? 15 : 5,
+  }),
+  colorGrayPDFCardList: (index) => ({
+    color: 'gray',
+    marginTop: index !== 'com.smartbus_qc' ? 8 : 0,
+    fontSize: index !== 'com.smartbus_qc' ? 22 : 16,
+    marginLeft: 2,
+  }),
+  containerCardPDFCardList: {
+    width: width * 0.964,
+    justifyContent: 'center',
+    // backgroundColor: '#ecf0f1',
+    padding: 8,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  containerViewCardList: {
+    width: width * 0.53,
+    alignItems: 'flex-end',
+  },
+  contaienrViewButtonCardList: {
+    backgroundColor: '#689f38',
+    width: 100,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+  },
+  containerViewTextCardList: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 };

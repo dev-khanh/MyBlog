@@ -1,6 +1,7 @@
-import React, {PureComponent} from 'react';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+/* eslint-disable prettier/prettier */
+import React, { PureComponent } from 'react';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
 import allReducer from './src/reducer';
 import createAppMiddleware from 'redux-saga';
 import rootSaga from './src/saga/rootSaga';

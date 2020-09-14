@@ -14,7 +14,7 @@ import SearchContainer from '../container/SearchContainer';
 import { StyleOptionScreen } from './style';
 import InforUserContainer from '../container/InforUserContainer';
 import ShowPDFContainer from '../container/ShowPDFContainer';
-import ShowMapView from '../compoment/ShowMapView';
+import ShowMapViewContainer from '../container/ShowMapViewContainer';
 const Stack = createStackNavigator();
 const Tabs = createBottomTabNavigator();
 function StackHomeTab() {
@@ -42,7 +42,7 @@ function StackInfoUser() {
       initialRouteName="Infor">
       <Stack.Screen name="Infor" component={InforUserContainer} />
       <Stack.Screen name="ShowPDF" component={ShowPDFContainer} />
-      <Stack.Screen name="MapView" component={ShowMapView} />
+      <Stack.Screen name="MapView" component={ShowMapViewContainer} />
     </Stack.Navigator>
   );
 }
@@ -57,9 +57,9 @@ function TabsNaviga() {
           } else if (route.name === 'Home') {
             // iconName = focused ? 'https://reactnative.dev/img/tiny_logo.png' : 'https://img.icons8.com/material/4ac144/256/user-male.png';
             iconName =
-              'https://upload.wikimedia.org/wikipedia/commons/8/87/%D0%97%D0%B2%D0%B5%D0%B7%D0%B4%D0%B0_logo.png';
+              'https://image.flaticon.com/icons/png/512/25/25694.png';
           } else if (route.name === 'Settings') {
-            iconName = 'https://reactnative.dev/img/tiny_logo.png';
+            iconName = 'https://images.vexels.com/media/users/3/141533/isolated/preview/f82882c85f620993805532cfef04008f-youtube-silver-icon-by-vexels.png';
           } else if (route.name === 'Infor') {
             iconName =
               'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Infobox_info_icon.svg/768px-Infobox_info_icon.svg.png';
@@ -80,7 +80,7 @@ function TabsNaviga() {
         activeTintColor: 'tomato',
         inactiveTintColor: 'gray',
       }}
-      initialRouteName="Infor">
+      initialRouteName="Main">
       <Tabs.Screen name="Main" component={StackMainTab} />
       <Tabs.Screen name="Home" component={StackHomeTab} />
       <Tabs.Screen name="Settings" component={SettingsScreen} />

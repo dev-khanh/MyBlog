@@ -18,12 +18,13 @@ import {
 export default class FlatListHomePage extends PureComponent {
   render() {
     return this.props.arrryas.map((item) => {
+      console.log(item.id);
       return (
         <View key={item.id} style={viewContainerHomePage}>
           <ImageBackground
             style={imagesBackgound}
             source={{ uri: item.arraysImage }}>
-            <View style={positionHomePage}>
+            <View style={positionHomePage(item.id)}>
               <Text style={titleHomePage}> {item.title} </Text>
               <Text style={titleHomePage2}> {item.title} </Text>
               <View style={viewBetween}>

@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MyBlog</string>
+    <string name="title_file_download">title_file_download</string>
+    <string name="downloading">downloading</string>
 </resources>
